@@ -32,7 +32,7 @@ class Flamegraph::Renderer
 
       col = []
 
-      stack.reverse.map{|r| r.to_s}.each_with_index do |frame, i|
+      stack.keep_if{|r| not ['/Users/joran/.rvm/'].any? { |s| r.include? s } }.reverse.map{|r| r.to_s}.each_with_index do |frame, i|
 
         if !prev[i].nil?
           last_col = prev[i]
